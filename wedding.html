@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jagan & Harshitha | Wedding Invitation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #8e1717;
+    --dark-red: #641010;
+    --gold: #c7952e;
+    --light-gold: #f5d889;
+    --cream: #fff8e8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 20% 10%, #fff9e9, transparent 30%),
+        radial-gradient(circle at 80% 90%, #ffe8b8, transparent 30%),
+        linear-gradient(135deg, #fff0c9, #fffaf0);
+    color: var(--dark-red);
+    overflow-x: hidden;
+}
+
+/* ==================================
+   START / COVER SCREEN
+================================== */
+
+.cover {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,.4), transparent 40%),
+        linear-gradient(135deg, #7d1010, #a92121, #6b0d0d);
+
+    transition:
+        transform 1.3s cubic-bezier(.77,0,.18,1),
+        opacity 1s ease;
+}
+
+.cover.opened {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cover-content {
+    position: relative;
+    width: min(90%, 650px);
+    padding: 50px 30px;
+    color: white;
+}
+
+.cover-content::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 2px solid var(--light-gold);
+    border-radius: 25px;
+}
+
+.cover-content::after {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px dashed rgba(255,216,137,.8);
+    border-radius: 18px;
+}
+
+.cover-om {
+    font-size: 55px;
+    color: var(--light-gold);
+    margin-bottom: 15px;
+    animation: glow 2s infinite alternate;
+}
+
+.cover-small {
+    position: relative;
+    z-index: 2;
+    letter-spacing: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ffe7a5;
+}
+
+.cover-names {
+    position: relative;
+    z-index: 2;
+    margin: 22px 0;
+    font-size: clamp(45px, 9vw, 75px);
+    font-style: italic;
+    font-weight: normal;
+    color: #fff3c4;
+    line-height: 1;
+}
+
+.cover-and {
+    position: relative;
+    z-index: 2;
+    font-size: 32px;
+    color: var(--light-gold);
+    margin: 8px;
+}
+
+/* ==================================
+   RIBBON BUTTON
+================================== */
+
+.ribbon-button {
+    position: relative;
+    z-index: 5;
+    display: inline-block;
+    margin-top: 25px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+.ribbon {
+    position: relative;
+    display: block;
+    min-width: 245px;
+    padding: 17px 35px;
+
+    color: #fff9e7;
+    background: linear-gradient(
+        180deg,
+        #dba83a,
+        #ae7410
+    );
+
+    border: 2px solid #ffe29a;
+    border-radius: 5px;
+
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    box-shadow:
+        0 5px 0 #754d0c,
+        0 10px 25px rgba(0,0,0,.3);
+
+    transition: .3s ease;
+}
+
+.ribbon::before,
+.ribbon::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    width: 35px;
+    height: 45px;
+    background: #8d5d0b;
+    z-index: -1;
+}
+
+.ribbon::before {
+    left: -30px;
+    clip-path: polygon(100% 0, 0 15%, 30% 50%, 0 85%, 100% 100%);
+}
+
+.ribbon::after {
+    right: -30px;
+    clip-path: polygon(0 0, 100% 15%, 70% 50%, 100% 85%, 0 100%);
+}
+
+.ribbon-button:hover .ribbon {
+    transform: scale(1.07);
+    box-shadow:
+        0 5px 0 #754d0c,
+        0 15px 30px rgba(0,0,0,.4);
+}
+
+.ribbon-button:active .ribbon {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #754d0c;
+}
+
+/* ==================================
+   COVER FLOWERS
+================================== */
+
+.cover-flower {
+    position: absolute;
+    font-size: 35px;
+    animation: floatFlower 4s ease-in-out infinite;
+}
+
+.cf1 {
+    top: 8%;
+    left: 8%;
+}
+
+.cf2 {
+    top: 12%;
+    right: 9%;
+    animation-delay: 1s;
+}
+
+.cf3 {
+    bottom: 10%;
+    left: 12%;
+    animation-delay: 2s;
+}
+
+.cf4 {
+    bottom: 9%;
+    right: 11%;
+    animation-delay: 3s;
+}
+
+@keyframes floatFlower {
+    0%,100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(7deg);
+    }
+}
+
+/* ==================================
+   INVITATION
+================================== */
+
+.invitation {
+    position: relative;
+    width: min(920px, 94%);
+    min-height: 100vh;
+    margin: 20px auto;
+    padding: 60px 45px;
+
+    background:
+        linear-gradient(
+            rgba(255,250,235,.97),
+            rgba(255,243,211,.97)
+        );
+
+    border: 7px double var(--gold);
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 0 7px #fff3d0,
+        0 20px 55px rgba(80,35,10,.22);
+
+    overflow: hidden;
+}
+
+.invitation::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.invitation::after {
+    content: "";
+    position: absolute;
+    inset: 23px;
+    border: 1px dashed #d7a541;
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+/* ==================================
+   FLOWER CORNERS
+================================== */
+
+.corner {
+    position: absolute;
+    z-index: 4;
+    font-size: 48px;
+    animation: flowerPulse 3s ease-in-out infinite;
+}
+
+.corner-tl {
+    top: 25px;
+    left: 25px;
+}
+
+.corner-tr {
+    top: 25px;
+    right: 25px;
+}
+
+.corner-bl {
+    bottom: 25px;
+    left: 25px;
+}
+
+.corner-br {
+    bottom: 25px;
+    right: 25px;
+}
+
+@keyframes flowerPulse {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15) rotate(4deg);
+    }
+}
+
+/* ==================================
+   FALLING FLOWERS
+================================== */
+
+.falling {
+    position: fixed;
+    top: -60px;
+    z-index: 20;
+    pointer-events: none;
+    animation: falling linear infinite;
+}
+
+.fl1 {
+    left: 5%;
+    animation-duration: 8s;
+}
+
+.fl2 {
+    left: 20%;
+    animation-duration: 11s;
+    animation-delay: 2s;
+}
+
+.fl3 {
+    left: 40%;
+    animation-duration: 9s;
+    animation-delay: 4s;
+}
+
+.fl4 {
+    left: 65%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.fl5 {
+    left: 88%;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-60px) rotate(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ==================================
+   TEXT
+================================== */
+
+.om {
+    font-size: 50px;
+    color: var(--gold);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #e8bf5d;
+    }
+
+    to {
+        text-shadow: 0 0 25px #e8bf5d;
+    }
+}
+
+.blessing {
+    margin-top: 5px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #98631a;
+}
+
+.decor {
+    margin: 15px 0;
+    color: var(--gold);
+    font-size: 24px;
+    letter-spacing: 7px;
+}
+
+.invite-text {
+    margin-top: 15px;
+    font-size: 17px;
+    color: #704343;
+}
+
+h1 {
+    margin-top: 10px;
+    color: var(--red);
+    font-size: clamp(45px, 8vw, 80px);
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1;
+    text-shadow: 2px 2px #f0d284;
+}
+
+.and {
+    display: block;
+    margin: 7px 0;
+    color: var(--gold);
+    font-size: 35px;
+}
+
+/* ==================================
+   BRIDE + GROOM
+================================== */
+
+.couple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 20px auto;
+}
+
+.person {
+    animation: coupleFloat 3s ease-in-out infinite;
+}
+
+.person:nth-child(3) {
+    animation-delay: .5s;
+}
+
+.person-icon {
+    width: 105px;
+    height: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+
+    background: white;
+    font-size: 60px;
+
+    box-shadow: 0 7px 18px rgba(80,40,10,.2);
+}
+
+.person-name {
+    margin-top: 7px;
+    font-size: 14px;
+    color: #8d5d16;
+}
+
+.handshake {
+    font-size: 42px;
+    animation: handshake 1.8s ease-in-out infinite;
+}
+
+@keyframes coupleFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes handshake {
+    0%,100% {
+        transform: rotate(0) scale(1);
+    }
+
+    50% {
+        transform: rotate(-7deg) scale(1.12);
+    }
+}
+
+/* ==================================
+   MESSAGE
+================================== */
+
+.message {
+    max-width: 650px;
+    margin: 25px auto;
+    color: #653838;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.message strong {
+    color: var(--red);
+}
+
+/* ==================================
+   DETAILS
+================================== */
+
+.details {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.detail {
+    flex: 1;
+    padding: 20px 15px;
+    background: rgba(255,255,255,.5);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    border-radius: 10px;
+}
+
+.icon {
+    font-size: 30px;
+}
+
+.detail-title {
+    margin: 7px 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #99651c;
+}
+
+.detail-value {
+    font-size: 19px;
+    font-weight: bold;
+    color: var(--red);
+}
+
+/* ==================================
+   VENUE
+================================== */
+
+.venue {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+
+    background: rgba(255,255,255,.45);
+
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+}
+
+.venue-icon {
+    font-size: 30px;
+}
+
+.venue-title {
+    margin: 6px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #98651d;
+}
+
+.venue-name {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--red);
+}
+
+.venue-state {
+    margin-top: 5px;
+    color: #704343;
+}
+
+/* ==================================
+   FINAL
+================================== */
+
+.love {
+    margin-top: 28px;
+    color: #843d27;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.footer {
+    margin-top: 18px;
+    color: #98651d;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ==================================
+   MOBILE RESPONSIVE
+================================== */
+
+@media (max-width: 650px) {
+
+    .cover-content {
+        width: 94%;
+        padding: 45px 20px;
+    }
+
+    .cover-small {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .cover-names {
+        font-size: 48px;
+    }
+
+    .ribbon {
+        min-width: 220px;
+        font-size: 14px;
+        padding: 15px 25px;
+    }
+
+    .cover-flower {
+        font-size: 27px;
+    }
+
+    .invitation {
+        width: 96%;
+        margin: 8px auto;
+        padding: 50px 18px;
+        border-width: 4px;
+        border-radius: 18px;
+    }
+
+    .invitation::before {
+        inset: 9px;
+    }
+
+    .invitation::after {
+        inset: 15px;
+    }
+
+    .corner {
+        font-size: 30px;
+    }
+
+    .corner-tl,
+    .corner-tr {
+        top: 18px;
+    }
+
+    .corner-bl,
+    .corner-br {
+        bottom: 18px;
+    }
+
+    .corner-tl,
+    .corner-bl {
+        left: 16px;
+    }
+
+    .corner-tr,
+    .corner-br {
+        right: 16px;
+    }
+
+    .om {
+        font-size: 40px;
+    }
+
+    .blessing {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .invite-text {
+        font-size: 14px;
+    }
+
+    .couple {
+        gap: 8px;
+    }
+
+    .person-icon {
+        width: 78px;
+        height: 78px;
+        font-size: 45px;
+        border-width: 3px;
+    }
+
+    .handshake {
+        font-size: 28px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .and {
+        font-size: 28px;
+    }
+
+    .message {
+        font-size: 15px;
+        padding: 0 8px;
+        line-height: 1.7;
+    }
+
+    .details {
+        flex-direction: column;
+        margin: 25px 8px;
+    }
+
+    .detail {
+        padding: 16px;
+    }
+
+    .venue {
+        margin: 0 8px;
+        padding: 16px;
+    }
+
+    .venue-name {
+        font-size: 21px;
+    }
+
+    .love {
+        font-size: 15px;
+        padding: 0 10px;
+    }
+
+    .footer {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 370px) {
+
+    .cover-names {
+        font-size: 41px;
+    }
+
+    .person-icon {
+        width: 68px;
+        height: 68px;
+        font-size: 39px;
+    }
+
+    .handshake {
+        font-size: 23px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ==================================
+     OPENING SCREEN
+================================== -->
+
+<div class="cover" id="cover">
+
+    <div class="cover-flower cf1">🌸</div>
+    <div class="cover-flower cf2">🌺</div>
+    <div class="cover-flower cf3">🌼</div>
+    <div class="cover-flower cf4">🌸</div>
+
+    <div class="cover-content">
+
+        <div class="cover-om">ॐ</div>
+
+        <div class="cover-small">
+            A Traditional Wedding Invitation
+        </div>
+
+        <div class="cover-names">
+            Jagan
+            <div class="cover-and">&amp;</div>
+            Harshitha
+        </div>
+
+        <div class="cover-small">
+            With lots of love & blessings
+        </div>
+
+        <button class="ribbon-button" onclick="openInvitation()">
+            <span class="ribbon">
+                ✨ Open Invitation ✨
+            </span>
+        </button>
+
+    </div>
+</div>
+
+
+<!-- ==================================
+     FALLING FLOWERS
+================================== -->
+
+<div class="falling fl1">🌸</div>
+<div class="falling fl2">🌼</div>
+<div class="falling fl3">🌺</div>
+<div class="falling fl4">🌸</div>
+<div class="falling fl5">🌼</div>
+
+
+<!-- ==================================
+     WEDDING INVITATION CARD
+================================== -->
+
+<main class="invitation">
+
+    <div class="corner corner-tl">🌿🌸</div>
+    <div class="corner corner-tr">🌸🌿</div>
+    <div class="corner corner-bl">🌿🌺</div>
+    <div class="corner corner-br">🌺🌿</div>
+
+    <section class="content">
+
+        <div class="om">ॐ</div>
+
+        <div class="blessing">
+            With the divine blessings of our families
+        </div>
+
+        <div class="decor">
+            ❈ ✦ ❈
+        </div>
+
+        <p class="invite-text">
+            We joyfully invite you to celebrate the wedding of
+        </p>
+
+        <!-- Bride and Groom -->
+        <div class="couple">
+
+            <div class="person">
+                <div class="person-icon">
+                    🤵🏻
+                </div>
+                <div class="person-name">
+                    Groom
+                </div>
+            </div>
+
+            <div class="handshake">
+                🤝
+            </div>
+
+            <div class="person">
+                <div class="person-icon">
+                    👰🏻‍♀️
+                </div>
+                <div class="person-name">
+                    Bride
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Names -->
+        <h1>Jagan</h1>
+
+        <span class="and">&amp;</span>
+
+        <h1>Harshitha</h1>
+
+        <div class="decor">
+            ❈ 🌸 ❈
+        </div>
+
+        <!-- Invitation message -->
+        <p class="message">
+            Two hearts, two families, and one beautiful journey
+            begin with love, laughter and togetherness.
+            <br><br>
+
+            With <strong>lots of love, joy and happiness</strong>,
+            we warmly invite you and your family to join us,
+            celebrate our special day and bless the newlyweds.
+        </p>
+
+
+        <!-- DATE & TIME -->
+        <div class="details">
+
+            <div class="detail">
+
+                <div class="icon">📅</div>
+
+                <div class="detail-title">
+                    Wedding Date
+                </div>
+
+                <div class="detail-value">
+                    15 November 2026
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="icon">🕉️</div>
+
+                <div class="detail-title">
+                    Muhurtham
+                </div>
+
+                <div class="detail-value">
+                    10:30 AM
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- VENUE -->
+
+        <div class="venue">
+
+            <div class="venue-icon">
+                📍
+            </div>
+
+            <div class="venue-title">
+                Wedding Venue
+            </div>
+
+            <div class="venue-name">
+                Sakhinetipalli
+            </div>
+
+            <div class="venue-state">
+                Andhra Pradesh, India
+            </div>
+
+        </div>
+
+
+        <div class="decor">
+            🌸 ❈ 🌼 ❈ 🌸
+        </div>
+
+
+        <p class="love">
+            "May our lives be filled with love, laughter,
+            happiness and countless beautiful memories."
+        </p>
+
+
+        <div class="footer">
+            Your presence is our greatest blessing ❤️
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+function openInvitation() {
+
+    const cover = document.getElementById("cover");
+
+    cover.classList.add("opened");
+
+    // Prevent the opening screen from blocking the page
+    setTimeout(() => {
+        cover.style.display = "none";
+    }, 1400);
+}
+</script>
+
+</body>
+</html>
